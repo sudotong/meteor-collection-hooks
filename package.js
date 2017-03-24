@@ -3,8 +3,8 @@
 Package.describe({
   name: 'sudotong:collection-hooks',
   summary: 'Extends Mongo.Collection with before/after hooks for insert/update/remove/find/findOne',
-  version: '0.9.0-rc.1',
-  git: 'https://github.com/matb33/meteor-collection-hooks.git'
+  version: '0.9.1',
+  git: 'https://github.com/sudotong/meteor-collection-hooks.git'
 })
 
 Package.onUse = Package.onUse || Package.on_use    // backwards-compat
@@ -62,7 +62,7 @@ Package.onTest(function (api) {
   }
 
   api.use([
-    'matb33:collection-hooks',
+    'sudotong:collection-hooks',
     'underscore',
     'accounts-base',
     'accounts-password',

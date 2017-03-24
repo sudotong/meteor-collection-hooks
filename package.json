@@ -14,12 +14,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/matb33/meteor-collection-hooks.git"
+    "url": "https://github.com/sudotong/meteor-collection-hooks.git"
   },
   "bugs": {
     "url": "https://github.com/matb33/meteor-collection-hooks/issues"
   },
-  "homepage": "https://github.com/matb33/meteor-collection-hooks",
+  "homepage": "https://github.com/sudotong/meteor-collection-hooks",
   "devDependencies": {
     "eslint": "^2.13.1",
     "eslint-config-standard": "^5.3.1",
