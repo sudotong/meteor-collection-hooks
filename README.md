@@ -1,3 +1,8 @@
+## Changes
+
+Added fix for [#103](https://github.com/matb33/meteor-collection-hooks/issues/103)
+
+
 # Meteor Collection Hooks [![Build Status](https://travis-ci.org/matb33/meteor-collection-hooks.png?branch=master)](https://travis-ci.org/matb33/meteor-collection-hooks)
 
 Extends Mongo.Collection with `before`/`after` hooks for `insert`, `update`, `remove`, `find`, and `findOne`.
@@ -11,7 +16,7 @@ Please refer to [History.md](History.md) for a summary of recent changes.
 Installation:
 
 ```
-meteor add matb33:collection-hooks
+meteor add sudotong:collection-hooks
 ```
 
 --------------------------------------------------------------------------------

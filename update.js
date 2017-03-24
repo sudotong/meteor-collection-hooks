@@ -73,8 +73,8 @@ CollectionHooks.defineAdvice('update', function (userId, _super, instance, aspec
             previous: prev.docs && prev.docs[doc._id],
             affected: affected,
             err: err
-          }, ctx), userId, doc, fields, prev.mutator, prev.options)
-        })
+          }, ctx), userId, doc, fields, prev.mutator, prev.options, prev.docs)
+        });
       })
     }
   }
