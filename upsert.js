@@ -52,7 +52,7 @@ CollectionHooks.defineAdvice('upsert', function (userId, _super, instance, aspec
     if (!suppressAspects) {
       if (!_.isEmpty(aspectGroup.update.after)) {
         var fields = CollectionHooks.getFields(args[1])
-        var docs = CollectionHooks.getDocs.call(self, instance, {_id: {$in: docIds}}, args[2]).fetch()
+        var docs = CollectionHooks.getDocs.call(self, instance, {_id: {$in: docIds||[]}}, args[2]).fetch()
       }
 
       _.each(aspectGroup.update.after, function (o) {
