@@ -1,5 +1,7 @@
 import { EJSON } from 'meteor/ejson'
+import merge from 'deepmerge';
 import { CollectionHooks } from './collection-hooks'
+
 
 const isEmpty = a => !Array.isArray(a) || !a.length
 
@@ -15,6 +17,7 @@ CollectionHooks.defineAdvice('update', function (userId, _super, instance, aspec
   let docIds
   let fields
   let abort
+  let beforeMutator;
   const prev = {}
 
   if (!suppressAspects) {
@@ -43,7 +46,9 @@ CollectionHooks.defineAdvice('update', function (userId, _super, instance, aspec
       // before
       aspects.before.forEach(function (o) {
         docs.forEach(function (doc) {
-          const r = o.aspect.call({ transform: getTransform(doc), ...ctx }, userId, doc, fields, mutator, options)
+          const tdoc = getTransform(doc);
+          const r = o.aspect.call({ transform: tdoc, ...ctx }, userId, doc, fields, mutator, options)
+          if (r && (r.mutator || r.modifier)) beforeMutator = (r.mutator || r.modifier)
           if (r === false) abort = true
         })
       })
@@ -68,7 +73,7 @@ CollectionHooks.defineAdvice('update', function (userId, _super, instance, aspec
             affected,
             err,
             ...ctx
-          }, userId, doc, fields, prev.mutator, prev.options, prev.docs ? prev.docs[doc._id] : null)
+          }, userId, doc, fields, prev.mutator && beforeMutator ? merge(prev.mutator, beforeMutator) : prev.mutator, prev.options, prev.docs ? prev.docs[doc._id] : null)
         })
       })
     }
